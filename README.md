@@ -19,12 +19,6 @@ To install the necessary dependencies, run:
 pip install -r requirements.txt
 ```
 
-## Usage
-To use the model for predicting fake news, run:
-```python
-python predict.py --input_file <path_to_input_file>
-```
-
 ## Dataset
 The dataset used for this project consists of Arabic news articles labeled as real or fake. The dataset is preprocessed to be compatible with BERT embeddings.
 
@@ -36,13 +30,7 @@ The model architecture consists of:
 ## Training
 To train the model, run:
 ```python
-python train.py --dataset <path_to_dataset>
-```
-
-## Evaluation
-To evaluate the model, run:
-```python
-python evaluate.py --dataset <path_to_dataset>
+python train.py --EPOCHS 5 --device mps --BATCH_SIZE 8 --enable_rbf 1 --num_kernels 1 --kernel_name gaussian
 ```
 
 ## Results

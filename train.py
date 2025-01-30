@@ -5,6 +5,7 @@ from clean_data import text_prepare
 import argparse
 from transformers import AutoTokenizer, AutoModel, set_seed as set_seed_transformers
 import torch
+print("Cuda available: ", torch.cuda.is_available())
 import torch.nn as nn
 from torch.optim import Adam
 import numpy as np

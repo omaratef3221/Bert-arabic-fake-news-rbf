@@ -12,15 +12,18 @@ def rbf_gaussian(x):
 def multiquadric_kernel(eps_r):
     return torch.sqrt(eps_r ** 2 + 1)
 
+def linear_kernel(x):
+    return x  # Linear kernel simply returns the input
+
 class CustomRBFFeedForward(nn.Module):
-    def __init__(self, in_features, out_features, num_kernels, kernel_name='gaussian'):
+    def __init__(self, in_features, out_features, num_kernels, kernel_name='linear'):
         super(CustomRBFFeedForward, self).__init__()
         # RBFLayer from the given implementation
         self.rbf_layer = RBFLayer(
             in_features_dim=in_features,  # Input size (e.g., 5120)
             num_kernels=num_kernels,  # Number of kernels in the RBF layer (can be tuned)
             out_features_dim=out_features,  # Output size (e.g., 5120)
-            radial_function=rbf_gaussian if kernel_name == 'gaussian' else  multiquadric_kernel,  # Use the Gaussian RBF
+            radial_function=linear_kernel if kernel_name == 'linear' else  multiquadric_kernel,  # Use the Gaussian RBF
             norm_function=l_norm  # Use Euclidean norm
         )
 

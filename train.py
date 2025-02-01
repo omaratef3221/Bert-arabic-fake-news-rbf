@@ -250,7 +250,7 @@ if __name__ == "__main__":
     parser.add_argument("--EPOCHS", type=int, default=10)
     parser.add_argument("--save_model_path", type=str, default="basic_model_path")
     parser.add_argument("--num_kernels", type=int, default=2)
-    parser.add_argument("--kernel_name", type=str, default="gaussian")
+    parser.add_argument("--kernel_name", type=str, default="linear")
     parser.add_argument("--enable_rbf", type=bool, default=False)
     args = parser.parse_args()
     train(args)

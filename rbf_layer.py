@@ -46,17 +46,17 @@ class RBFLayer(nn.Module):
         if self.constant_weights_parameters:
             self.weights = nn.Parameter(self.initial_weights_parameters, requires_grad=True)
         else:
-            self.weights = nn.Parameter(torch.zeros(self.out_features_dim, self.num_kernels, dtype=torch.bfloat16))
+            self.weights = nn.Parameter(torch.zeros(self.out_features_dim, self.num_kernels, dtype=torch.bfloat16), requires_grad=True)
 
         # Initialize kernels' centers
         if self.constant_centers_parameter:
-            self.kernels_centers = nn.Parameter(self.initial_centers_parameter, requires_grad=True)
+            self.kernels_centers = nn.Parameter(self.initial_centers_parameter, requires_grad=False)
         else:
             self.kernels_centers = nn.Parameter(torch.zeros(self.num_kernels, self.in_features_dim, dtype=torch.bfloat16))
 
         # Initialize shape parameter
         if self.constant_shape_parameter:
-            self.log_shapes = nn.Parameter(self.initial_shape_parameter, requires_grad=True)
+            self.log_shapes = nn.Parameter(self.initial_shape_parameter, requires_grad=False)
         else:
             self.log_shapes = nn.Parameter(torch.zeros(self.num_kernels, dtype=torch.bfloat16))
             

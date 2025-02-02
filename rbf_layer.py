@@ -44,7 +44,7 @@ class RBFLayer(nn.Module):
     def _make_parameters(self) -> None:
         # Initialize linear combination weights
         if self.constant_weights_parameters:
-            self.weights = nn.Parameter(self.initial_weights_parameters, requires_grad=True)
+            self.weights = nn.Parameter(self.initial_weights_parameters, requires_grad=False)
         else:
             self.weights = nn.Parameter(torch.zeros(self.out_features_dim, self.num_kernels, dtype=torch.bfloat16), requires_grad=False)
 
